@@ -1,0 +1,339 @@
+*{
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+li a,li{
+    text-decoration: none;
+    list-style-type: none;
+}
+hr,.search-header,.search-bar-form{
+    max-width: 1300px;
+    width: 86vw;
+    margin: 5px 7vw;
+}
+.search-header{
+   margin: 0;
+   border-radius: 15px;
+   width: 100%;
+   font-size: 18px;
+   outline: none;
+   padding: 0 40px 0 20px;
+   height: 40px;
+    /* display: none; */
+}
+.search-bar-form{
+    margin-top: 20px;
+    position: relative;
+    display: none;
+    /* border: 2px solid black; */
+    
+}
+.search-bar-form img{
+    top: 7px;
+    bottom: 10px;
+    right: 10px;
+    height: 26px;
+    /* border: 1px solid black; */
+    position: absolute;
+}
+.near-dishes,.footer-container{
+    max-width: 1300px;
+    width: 86vw;
+    margin: 15px 7vw;
+    margin-top: 30px;
+}
+.header{
+    display: flex;
+    max-width: 1300px;
+    /* border: 2px solid black; */
+    color: black;
+    padding: 0px 0px ;
+    margin: 5px 7vw;
+    width: 86vw;
+    justify-content: space-between;
+}
+.logo-img{
+    margin-top: 10px;
+}
+
+.middle-part{
+    display: flex;
+    align-items: flex-end;
+    font-size: 15px;
+    justify-content: space-between;
+    font-weight: 600;
+}
+.middle-part li a{
+    margin: 1px 10px;
+    color: black;
+    
+}
+.middle-part li a:active{
+    border: 3px solid orange;
+    border-top:none ;
+    border-left:none ;
+    border-right:none ;
+}
+
+.right-part{
+    justify-content: space-between;
+    align-items: flex-end;
+    
+}
+.right-part button{
+    border: none;
+    padding: 0 8px;
+    margin-left: 0;
+    background-color:white;
+    margin-bottom: 0;
+    margin-top: 13px;
+    cursor: pointer;
+}
+
+.right-part button img{
+    height: 26px;
+    margin-bottom: -7px;
+}
+.right-part .header-signin{
+    margin-top: 20px;
+    background-color: skyblue;
+    padding: 4px 10px;
+    border-radius: 19px;
+    color: black;
+    font-weight: 700;
+}
+/* .right-part img{
+   border: 1px solid black;
+   outline: none;
+} */
+.text-on-image{
+    position: absolute;
+    /* border: 1px solid  black; */
+
+}
+.explore-menu-box{
+    padding: 10px 0px;
+    /* border: 2px solid black; */
+    max-width: 1300px;
+    margin: 5px 7vw;
+    width: 86vw;
+}
+.explore-menu-title{
+    padding: 5px;
+}
+.explore-menu-description{
+    padding: 10px;
+}
+.explore-menu-images{
+    padding: 5px;
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+    overflow-x: scroll;  
+}
+.explore-menu-item{
+    margin-top: 8px;
+}
+.explore-menu-images::-webkit-scrollbar{
+    display: none;
+}
+.menu-image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+    padding: 5px;
+}
+.menu-image img{
+    cursor: pointer;
+    height: 130px;
+    width: 130px;
+}
+
+.main{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    /* border: 1px solid black; */
+    max-width: 1300px;
+    margin: 10px 7vw;
+    gap: 10px;
+    width: 86vw;
+    row-gap: 20px; 
+
+}
+.food-box{
+    /* border: 1px solid black; */
+    border-radius: 9px;
+    background-color: whitesmoke;
+}
+.header-img{
+    width: 86vw;
+    max-width: 1300px;
+    margin: 0px 7vw; 
+    position: relative; 
+    /* margin-top: ; */
+}
+.header-img img{
+    height: auto;
+    width: 100%;
+    margin-bottom: 0px;
+    margin-top: 80px;
+    position: relative;
+}
+
+.image img{
+    height: 100%;
+    width: 100%;
+    border-top-right-radius:9px;
+    border-top-left-radius: 9px;
+    object-fit:contain;
+}
+.image {
+    position: relative;
+}
+.item-quantity-box{
+    position: absolute;
+    /* border: 1px solid black; */
+    height: 25px;
+    width: 90px;
+    bottom: 10px;
+    right:10px;
+    background-color: white;
+    display: flex;
+    border-radius:12px;
+    align-items: center;
+    justify-content: space-between;   
+}
+.item-quantity-decrement,.item-quantity-increment{
+    width: 33%;
+    height: 100%;
+    background-color: orange;
+    border: none;
+    cursor: pointer;
+    border-radius: 180px; 
+    
+}
+.item-quantity{
+    width: 33%;
+    text-align: center;
+}
+
+.item-details .item-name,
+.item-details .item-price,
+.item-details .item-description{
+        margin: 5px;
+        padding: 5px;
+}
+
+.footer{
+    display: flex;
+    background-color: black;
+    color: white;
+}
+
+.footer-container{
+    /* border: 1px solid wheat; */
+    display: flex;
+}
+.footer-left,.footer-mid,.footer-right{
+    /* border: 1px solid white; */
+    padding: 20px;
+}
+.footer-left{
+    width : 50%;
+}
+.footer-mid{
+    width : 25%;
+}
+.footer-right{
+    width : 25%;
+}
+
+.footer-left img,
+.footer-left p,
+.footer-left .footer-icons{
+    margin: 10px 0;
+}
+
+.footer-mid ul li a{
+    color: white;
+    list-style-type: none;
+}
+.footer-mid h2,
+.footer-mid ul li{
+    margin:10px 0;
+}
+.footer-right h3,
+.footer-right p{
+    margin: 10px 0;
+}
+
+
+.navigation{
+    top: 0;
+    position: fixed;
+    z-index: 9;
+    background-color: white;
+}
+
+@media screen and (max-width:785px) {
+    .middle-part{
+        display: none;
+    }
+}
+
+@media screen and (max-width:618px) {
+    /* .header{
+        padding: 25px 20px ;
+    } */
+}
+
+@media screen and (max-width:665px) {
+    .main{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media screen and (max-width:640px) {
+    .footer-container{
+        flex-direction: column;
+    }
+    .footer-left,.footer-mid,.footer-right{
+    width : 100%;
+}
+}
+
+@media screen and (max-width:410px) {
+    .right-part{
+        display: none;
+    }
+    .search-bar-form{
+        display: block;
+    }
+    .menu-image img{
+        height: 100px;
+       width: 100px;
+    }
+    .header-img img{
+        margin-top: 145px;
+    }
+}
+
+@media screen and (max-width:373px) {
+    
+    
+    .main{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .food-box {
+        height: auto;
+    }
+
+}
+@media (min-width:619px) and (max-width:869px) {
+    .main{
+        grid-template-columns: repeat(3,1fr);
+    }
+
+}
