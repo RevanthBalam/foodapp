@@ -1,0 +1,65 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/owner.css' %}">
+    {% block extra_css %} {% endblock %}
+
+</head>
+<body>
+
+    {% block header %}
+    <nav>
+        <div class='left-nav'>
+            <div class ='left-inner-div'>
+                <a href="{% url 'owner' %}">
+                    <img class="header-logo" src="{% static 'images/quickbyte_logo.png' %}" alt="webapp-logo">
+                </a>
+                
+                <p>Quick Byte</p>
+            </div>
+            <div class ='right-inner-div'>
+                
+            </div>
+        </div>
+        <div class='right-nav'>
+           
+            <div class="profile">Logout</div>
+        </div>
+    </nav> 
+    {% endblock %}
+
+    {% block content %}
+
+    <main>
+
+        <div class="container">
+            <div>Add New Item</div>
+            <div><a href="{% url 'new-item' %}">Add</a></div>
+        </div>
+
+        <div class="container">
+            <div>Edit Item</div>
+            <div><a href="{% url 'edit-item' %}">Edit</a></div>
+        </div>
+
+        <div class="container">
+            <div>View Orders</div>
+            <div><a href="{% url 'view-orders' %}">View</a></div>
+        </div>
+
+        <div class="container">
+            <div>Profile Updation</div>
+            <div><a href="">Edit</a></div>
+        </div>
+        
+
+    </main>
+
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,45 @@
+.container-items{
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid;
+}
+
+.item-details img{
+    width: 100px;
+    height: 100px;
+}
+.each-item{
+    position: relative;
+}
+.heading{
+    text-align: center;
+}
+.edit-btn{
+    position: absolute;
+    bottom: 0;
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    right: 10px;
+}
+
+.back{
+    max-width: 600px;
+    position: relative;
+    margin: 0 auto;
+    height: 30px;
+}
+.back a{
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    border: 2px solid;
+    padding: 5px;
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    border-radius: 3px;
+}

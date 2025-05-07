@@ -1,0 +1,173 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block extra_css  %}
+<link rel="stylesheet" href="{% static 'css/res.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="main-content">
+
+    <div class="wrapper">
+
+    <div class="heading">
+        <p>Savory Garden Bistro</p>
+    </div>
+    <div class="des">
+        <p>Nestled in the heart of the city, Savory Garden Bistro offers a delightful escape with its charming interior and exquisite menu.</p>
+        <p>The restaurant boasts a warm and inviting ambiance, perfect for both intimate dinners and lively gatherings. Our carefully curated menu features seasonal produce and organic ingredients, catering to both vegetarian and vegan preferences. Experience culinary bliss at Savory Garden Bistro!</p>
+    </div>
+    <div class="res-image">
+        <img src="{% static 'images/res_image.png' %}" alt="">
+    </div>
+
+    </div>
+
+</div>
+
+
+<div class="menu-container">
+    <h3 class='main-header'>Our Menu</h3>
+    <div class="fooditems-container">
+        <div class="food-item">
+            <div class="food-item-head">
+                <img src="{% static 'images/food_6.png' %}" alt="">
+            </div>
+            <div class="food-item-body">
+                <p>Pasta</p>
+                <p>Rich creamy</p>
+                <p>Price:$ 12</p>
+                <a href="">Add to Cart</a>
+            </div>
+        </div>
+        <div class="food-item">
+            <div class="food-item-head">
+                <img src="{% static 'images/food_7.png' %}" alt="">
+            </div>
+            <div class="food-item-body">
+                <p>Pasta</p>
+                <p>Rich creamy</p>
+                <p>Price:$ 12</p>
+                <a href="">Add to Cart</a>
+            </div>
+        </div>
+        <div class="food-item">
+            <div class="food-item-head">
+                <img src="{% static 'images/food_8.png' %}" alt="">
+            </div>
+            <div class="food-item-body">
+                <p>Pasta</p>
+                <p>Rich creamy</p>
+                <p>Price:$ 12</p>
+                <a href="">Add to Cart</a>
+            </div>
+        </div>
+        <div class="food-item">
+            <div class="food-item-head">
+                <img src="{% static 'images/food_9.png' %}" alt="">
+            </div>
+            <div class="food-item-body">
+                <p>Pasta</p>
+                <p>Rich creamy</p>
+                <p>Price:$ 12</p>
+                <a href="">Add to Cart</a>
+            </div>
+        </div>
+        <div class="food-item">
+            <div class="food-item-head">
+                <img src="{% static 'images/food_10.png' %}" alt="">
+            </div>
+            <div class="food-item-body">
+                <p>Pasta</p>
+                <p>Rich creamy</p>
+                <p>Price:$ 12</p>
+                <a href="">Add to Cart</a>
+            </div>
+        </div>
+        <div class="food-item">
+            <div class="food-item-head">
+                <img src="{% static 'images/food_11.png' %}" alt="">
+            </div>
+            <div class="food-item-body">
+                <p>Pasta</p>
+                <p>Rich creamy</p>
+                <p>Price:$ 12</p>
+                <a href="">Add to Cart</a>
+            </div>
+        </div>
+        <div class="food-item">
+            <div class="food-item-head">
+                <img src="{% static 'images/food_12.png' %}" alt="">
+            </div>
+            <div class="food-item-body">
+                <p>Pasta</p>
+                <p>Rich creamy</p>
+                <p>Price:$ 12</p>
+                <a href="">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="reviews-container">
+    <h3 class='main-header'>Hear From Our AweSome Users</h3>
+    <div class='review-boxes'>
+        <div class='review'>
+            <div class="review-header">
+                <div class="header-left">
+                    <img src="{% static 'images/userpic.png' %}" alt="">
+                </div>
+                <div class="header-right">
+                    <div class="username">Thomas</div>
+                    <div class="rating">
+                        <img src="{% static 'images/rating_review.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-body">
+                <p>QuickBite's meals are fresh, delicious, and always on time!</p>
+            </div>
+        </div>
+        
+        
+        <div class='review'>
+            <div class="review-header">
+                <div class="header-left">
+                    <img src="{% static 'images/user3_pic.png' %}" alt="">
+                </div>
+                <div class="header-right">
+                    <div class="username">James Rodriguez</div>
+                    <div class="rating">
+                        <img src="{% static 'images/rating_review.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-body">
+                <p>Amazing variety and excellent service every single time!</p>
+            </div>
+        </div>
+        <div class='review'>
+            <div class="review-header">
+                <div class="header-left">
+                    <img src="{% static 'images/user2_pic.png' %}" alt="">
+                </div>
+                <div class="header-right">
+                    <div class="username">Emily Carter</div>
+                    <div class="rating">
+                        <img src="{% static 'images/rating_review.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-body">
+                <p>QuickBite's meals are fresh, delicious, and always on time!</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

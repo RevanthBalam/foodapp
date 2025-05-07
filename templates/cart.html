@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block extra_css  %}
+
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+<div class="all-items">
+    <h3 class='main-header'>Our Menu</h3>
+<div class="cart-item">
+    <img src="{% static 'images/food_6.png' %}" class="item-image">
+    <div class="item-details">
+        <div class="item-name">Pasta</div>
+        <div class="item-price">$59.99</div>
+        Quantity: <input type="number" class="quantity" value="1" min="1">
+        <button class="remove-btn">Remove</button>
+    </div>
+</div>
+
+<div class="cart-item">
+    <img src="{% static 'images/food_9.png' %}" class="item-image">
+    <div class="item-details">
+        <div class="item-name">Pani Puri</div>
+        <div class="item-price">$129.99</div>
+        Quantity: <input type="number" class="quantity" value="1" min="1">
+        <button class="remove-btn">Remove</button>
+    </div>
+</div>
+
+<div class="cart-total">
+    <strong>Total: $189.98</strong>
+</div>
+
+<button class="checkout-btn">Proceed to Checkout</button>
+</div>
+{% endblock %}

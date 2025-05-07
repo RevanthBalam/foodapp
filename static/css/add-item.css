@@ -1,0 +1,40 @@
+.form-details{
+    max-width: 400px;
+    border: 1px solid black;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+.form-details input{
+    margin: 15px;
+    height: 30px;
+    padding-left: 10px;
+}
+button{
+    border-radius: 5px;
+    border: none;
+    height: 40px;
+    background-color: goldenrod;
+    color: white;
+    cursor: pointer;
+}
+
+.back{
+    max-width: 400px;
+    position: relative;
+    margin: 0 auto;
+
+    height: 30px;
+}
+.back a{
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    border: 2px solid;
+    padding: 5px;
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    border-radius: 3px;
+}

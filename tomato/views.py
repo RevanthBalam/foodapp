@@ -6,8 +6,16 @@ from .models import*
 # Create your views here.
 
 
-def cart(request):
-    return render(request,'cart.html')
+def restaurant(request):
+    return render(request,'restaurant.html')
+def owner(request):
+    return render(request,'owner.html')
+def new_item(request):
+    return render(request,'newitem.html')
+def edit_item(request):
+    return render(request,'edititem.html')
+def view_orders(request):
+    return render(request,'vieworders.html')
 
 def home(request):
     food1 = FoodItem("chineese","Eat and be Happy",50)
@@ -19,13 +27,8 @@ def home(request):
     return render(request,'index.html',{"foods":[food1,food2,food3]})
 
 
-def add(request):
-    val1 = int(request.GET['num1'])
-    val2 = int(request.GET['num2'])
+def cart(request):
     
-    res = val1+val2
     
-    print(res)
-    
-    return render(request,'another.html',{"result":res})
+    return render(request,'cart.html')
     

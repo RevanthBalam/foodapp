@@ -1,0 +1,42 @@
+.orders-container{
+    max-width: 500px;
+    margin:0 auto;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.order-item img{
+    height: 60px;
+    width: 60px; 
+    border: 1px solid;
+    padding: 5px;
+}
+
+.order-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+select{
+    border: 2px solid;
+    height: 20px;
+}
+.back{
+    max-width: 500px;
+    position: relative;
+    margin: 0 auto;
+
+    height: 30px;
+}
+.back a{
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    border: 2px solid;
+    padding: 5px;
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    border-radius: 3px;
+}

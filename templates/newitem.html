@@ -1,0 +1,24 @@
+{% extends 'owner.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/add-item.css' %}">
+{% endblock %}
+
+{% block content %}
+<form action="{% url 'owner' %}">
+<div class="form-details">
+
+    <input type="text" placeholder="Food Name" required minlength="10 ">
+    <input type="text" placeholder="Description" required>
+    <input type="number" placeholder="Price" min=1 required>
+    <input type="file" placeholder="Upload Image">
+    <button type="submit">Submit</button>
+
+</div>
+
+
+</form>
+<div class="back"><a href="{% url 'owner' %}">Back</a></div>
+
+{% endblock %} 

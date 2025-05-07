@@ -1,0 +1,41 @@
+{% extends "owner.html" %}
+{% load static %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static "css/edit-item.css" %}">
+{% endblock %}
+
+{% block content %}
+
+<h3 class="heading">Items</h3>
+<div class="container-items">
+    <div class="each-item">
+        <div class="item-details">
+            <img src="{% static 'images/food_4.png' %}" alt="">
+            <p>Pasta</p>
+        </div>
+        <button class="edit-btn">Edit</button>
+    </div>
+</div>
+<div class="container-items">
+    <div class="each-item">
+        <div class="item-details">
+            <img src="{% static 'images/food_5.png' %}" alt="">
+            <p>Pasta</p>
+        </div>
+        <button class="edit-btn">Edit</button>
+    </div>
+</div>
+<div class="container-items">
+    <div class="each-item">
+        <div class="item-details">
+            <img src="{% static 'images/food_2.png' %}" alt="">
+            <p>Pasta</p>
+        </div>
+        <button class="edit-btn">Edit</button>
+    </div>
+</div>
+<div class="back"><a href="{% url 'owner' %}">Back</a></div>
+
+{% endblock %}

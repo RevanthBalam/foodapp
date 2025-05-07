@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quick Byte</title>
     <link rel="stylesheet" href="{% static "css/base.css" %}">
+    <link rel="icon" href="{% static 'images/quickbyte_logo.png' %}" type="image/png">
+
+    {% block extra_css %}{% endblock %}
     
 </head>
 <body>
@@ -16,14 +19,17 @@
     <nav>
         <div class='left-nav'>
             <div class ='left-inner-div'>
-                <img class="header-logo" src="{% static 'images/quickbyte_logo.png' %}" alt="webapp-logo">
+                <a href="{% url 'home' %}">
+                    <img class="header-logo" src="{% static 'images/quickbyte_logo.png' %}" alt="webapp-logo">
+                </a>
+                
                 <p>Quick Byte</p>
             </div>
             <div class ='right-inner-div'>
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Restaurant details</a></li>
-                    <li><a href="">Cart</a></li>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="#all-res">Restaurant details</a></li>
+                    <li><a href="{% url 'cart' %}">Cart</a></li>
                 </ul>
             </div>
         </div>
@@ -37,8 +43,8 @@
         <div class="hamburger">&#9776;</div>
     </nav>
     <div class="mobile-menu">
-        <a href="#">Home</a>
-        <a href="#">Restaurant Details</a>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="#all-res">Restaurant Details</a>
         <a href="#">Cart</a>
         <a href="#">Order Now</a>
         <a href="#">Login</a>
@@ -78,17 +84,6 @@
             </div>
             <div class='food-container'>
                 <div class='food-container-head'>
-                    <img src="{% static 'images/food_3.png' %}" alt="">
-                </div>
-                <div class='food-container-body'>
-                    <p>Pizza</p>
-                    <p>Hot and cheesy delight</p>
-                    <p>Perfect for any occasion</p>
-                    <a href="">Explore</a>
-                </div>
-            </div>
-            <div class='food-container'>
-                <div class='food-container-head'>
                     <img src="{% static 'images/food_4.png' %}" alt="">
                 </div>
                 <div class='food-container-body'>
@@ -112,7 +107,7 @@
         </div>
     </main>
 
-    <div class="restaurants">
+    <div class="restaurants" id="all-res">
         <h3>Popular Restaurants</h3>
 
         <div class="restaurants-container">
@@ -122,24 +117,28 @@
                 <p class="res-name">Le bella veta</p>
                 <p>Italin cuisne</p>
                 <p>Rating:4.5</p>
+                <a href="{% url 'rest' %}">View Menu</a>
             </div>
             <div class="Restaurant">
                 <img src="{% static 'images/res_2.png' %}" alt="">
                 <p class="res-name">Le bella veta</p>
                 <p>Italin cuisne</p>
                 <p>Rating:4.5</p>
+                <a href="{% url 'rest' %}">View Menu</a>
             </div>
             <div class="Restaurant">
                 <img src="{% static 'images/res_3.png' %}" alt="">
                 <p class="res-name">Le bella veta</p>
                 <p>Italin cuisne</p>
                 <p>Rating:4.5</p>
+                <a href="{% url 'rest' %}">View Menu</a>
             </div>
             <div class="Restaurant">
                 <img src="{% static 'images/res_4.png' %}" alt="">
                 <p class="res-name">Le bella veta</p>
                 <p>Italin cuisne</p>
                 <p>Rating:4.5</p>
+                <a href="{% url 'rest' %}">View Menu</a>
             </div>
 
         </div>
@@ -166,7 +165,7 @@
             <div class="footer-mid">
                 <h2>Company</h2>
                 <ul>
-                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="">About us</a></li>
                     <li><a href="">delivery</a></li>
                     <li><a href="">Privacy Policy</a></li>

@@ -1,0 +1,51 @@
+{% extends "owner.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/view-orders.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="orders-container">
+
+    <div class="order-item">
+        <p>Image</p>
+        <p>Item</p>
+        <p>Username</p>
+       <p>Status</p>
+    </div>
+    <div class="order-item">
+        <img src="{% static 'images/food_5.png' %}" alt="">
+        <p>Pasta</p>
+        <p>Revan</p>
+        <select name="Pending" id="">
+            <option value="">Delivered</option>
+            <option value="">out of delivery</option>
+        </select>
+    </div>
+    <div class="order-item">
+        <img src="{% static 'images/food_5.png' %}" alt="">
+        <p>Pasta</p>
+        <p>Revan</p>
+        <select name="Pending" id="">
+            <option value="">Delivered</option>
+            <option value="">out of delivery</option>
+        </select>
+    </div>
+    <div class="order-item">
+        <img src="{% static 'images/food_5.png' %}" alt="">
+        <p>Pasta</p>
+        <p>Revan</p>
+        <select name="Pending" id="">
+            <option value="">Delivered</option>
+            <option value="">out of delivery</option>
+        </select>
+    </div>
+</div>
+<div class="back"><a href="{% url 'owner' %}">Back</a></div>
+
+{% endblock %}
