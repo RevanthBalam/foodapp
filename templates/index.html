@@ -38,7 +38,7 @@
                 <img src="{% static 'images/basket_icon.png' %}" alt="">
                 <p>Order Now</p>
             </div>
-            <div class="profile">Login</div>
+            <a href="{% url 'login' %}"><button class="profile">Login</button></a>
         </div>
         <div class="hamburger">&#9776;</div>
     </nav>
@@ -49,6 +49,10 @@
         <a href="#">Order Now</a>
         <a href="#">Login</a>
       </div>
+
+
+
+   
     
 
     {% endblock %}
@@ -112,34 +116,19 @@
 
         <div class="restaurants-container">
 
+
+            {% for re in res %}
+
             <div class="Restaurant">
-                <img src="{% static 'images/res_1.png' %}" alt="">
+                <img src="{{re.restaurant_image.url}}" alt="">
                 <p class="res-name">Le bella veta</p>
                 <p>Italin cuisne</p>
                 <p>Rating:4.5</p>
                 <a href="{% url 'rest' %}">View Menu</a>
             </div>
-            <div class="Restaurant">
-                <img src="{% static 'images/res_2.png' %}" alt="">
-                <p class="res-name">Le bella veta</p>
-                <p>Italin cuisne</p>
-                <p>Rating:4.5</p>
-                <a href="{% url 'rest' %}">View Menu</a>
-            </div>
-            <div class="Restaurant">
-                <img src="{% static 'images/res_3.png' %}" alt="">
-                <p class="res-name">Le bella veta</p>
-                <p>Italin cuisne</p>
-                <p>Rating:4.5</p>
-                <a href="{% url 'rest' %}">View Menu</a>
-            </div>
-            <div class="Restaurant">
-                <img src="{% static 'images/res_4.png' %}" alt="">
-                <p class="res-name">Le bella veta</p>
-                <p>Italin cuisne</p>
-                <p>Rating:4.5</p>
-                <a href="{% url 'rest' %}">View Menu</a>
-            </div>
+
+            {% endfor %}
+           
 
         </div>
     </div>

@@ -4,29 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
+    <title>Register page</title>
     <link rel="icon" href="{% static 'images/quickbyte_logo.png' %}" type="image/png">
-        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+        <link rel="stylesheet" href="{% static 'css/register.css' %}">
 </head>
 <body>
     <div class="container">
         <div class="register">
             <h1>Hello, Welcome</h1>
-            <p>Don't Have An Account?</p>
-            <a href="{% url 'register' %}">Register</a>
-            <a href="{% url 'register-owner' %}">Register as Owner</a>
+            <p>Already Have An Account?</p>
+            <a href="{% url  'login' %}">Login</a>
         </div>
         <div class="login">
-            <h2>Login</h2>
-            <form action="{% url 'home' %}">
+            <h2>Register</h2>
+            <form method="POST">
                 {% csrf_token %}
-                <input type="text" placeholder="UserName" required>
-                <input type="password" placeholder="PassWord" required>
+                <input type="text" name="user_name" placeholder="UserName" required>
+                <input type="password" name="password_1" placeholder="create PassWord" required>
+                <input type="password" name="password_2" placeholder="confirm PassWord" required>
+                {% if error %}
+                {{error}}
+                {% endif %}
             
-            <p>Forgot Password</p>
-            <button type="submit">Login</button>
+            
+            <button type="submit">Create Account</button>
         </form>
-            <p>Or  login With Social Platforms</p>
+            <p>Or Continue With Social Platforms</p>
             <div class="logos">
                 <a href="https://google.com"><img src="images/icons8-facebook-50.png" alt=""></a>
                 <a href="https://github.com"><img src="images/icons8-github-50.png" alt=""></a>

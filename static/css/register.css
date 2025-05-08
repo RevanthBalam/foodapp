@@ -32,7 +32,16 @@ body{
     border-top-right-radius: 110px;
     border-bottom-right-radius: 110px;
 }
+#res-label{
+    margin: 0;
+}
 
+#res-name{
+    font-size: 10px;
+    margin-top: 15px;
+    text-align: start;
+    width: 100%;
+}
 .register p,.register h1{
     margin: 0;
     color: white;
@@ -49,7 +58,6 @@ body{
     border-radius: 5px;
     transition:color 0.30s,background-color 0.30s;
     cursor: pointer;
-    margin-bottom: 5px;
 }
 .register a:hover{
     background-color: white;
@@ -97,6 +105,14 @@ body{
     margin-top: 16px;
     
     cursor: pointer;
+}
+
+#res-description{
+    width: 100%;
+    resize: none;
+    margin-top: 20px;
+    border-radius: 5px;
+    height: 100px;
 }
 .logos{
     margin-top: 13px;

@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register page</title> 
+  
+    <link rel="icon" href="{% static 'images/quickbyte_logo.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+
+    <style>
+        .container{
+            margin-top:3vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="register">
+            <h1>Hello, Welcome</h1>
+            <p>Already Have An Account?</p>
+            <a href="{% url  'login' %}">Login</a>
+        </div>
+        <div class="login">
+            <h2>Register</h2>
+            <form  method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="text" placeholder="UserName" name="res-username" required>
+                <input type="text" placeholder="Restaurant Name"  name="name" required>
+                <label for="" id="res-name" >Restaurant Image</label>
+                <input id="res-label" type="file" name="res-image" id="">
+                
+                <input type="password" placeholder="Create PassWord" name="password_1" required>
+                
+                <input type="password" placeholder="confirm PassWord" name="password_2" required>
+               
+               
+                <textarea id="res-description" placeholder="Enter Description" name="res-des"></textarea>
+
+                {% if error %}
+                {{error}}
+                {% endif %}
+
+            
+            
+            <button type="submit">Create Account</button>
+        </form>
+            <p>Or Continue With Social Platforms</p>
+            <div class="logos">
+                <a href="https://google.com"><img src="images/icons8-facebook-50.png" alt=""></a>
+                <a href="https://github.com"><img src="images/icons8-github-50.png" alt=""></a>
+                <a href="https://linkedin.com"><img src="images/icons8-linkedin-50.png" alt=""></a>
+                <a href="https://facebook.com"><img src="images/icons8-facebook-50.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

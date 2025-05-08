@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'foodapplication.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'FoodWebApplication',
+        'PASSWORD' : 'varsha1437',
+        'USER' : 'root',
+        'HOST':'localhost',
+        'PORT':3306,
     }
 }
 
@@ -130,3 +134,8 @@ STATIC_ROOT = os.path.join(BASE_DIR,'assets')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
