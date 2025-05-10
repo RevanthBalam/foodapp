@@ -1,0 +1,41 @@
+{% extends 'owner.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/add-item.css' %}">
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="{% url 'owner' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="form-details">
+
+    <input type="text" placeholder="Restaurant Name"  name="res-name" required minlength="10 " 
+    value = "{{rest.restaurant_name}} ">
+    <input type="text" placeholder="short Description" name="res-short-des" required value = "{{rest.restaurant_short_description}} ">
+    <input type="text" placeholder="long Description"  name="res-long-des" required  value = "{{rest.restaurant_full_description}}" >
+     
+
+    <input type="file" placeholder="Upload Image" name="res-img" required>
+
+    <div class='type'>
+        <label for="">Type of food : </label>
+    <select name="type_of_providing_food" id="">
+        <option value="veg">Veg</option>
+        <option value="Non-veg">Non-veg</option>
+        <option value="veg & Non-veg">veg & Non-veg</option>
+    </select>
+
+
+
+    </div>
+    
+    <button type="submit">Submit</button>
+
+</div>
+
+
+</form>
+<div class="back"><a href="{% url 'owner' %}">Back</a></div>
+
+{% endblock %} 

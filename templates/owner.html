@@ -28,7 +28,7 @@
         </div>
         <div class='right-nav'>
            
-            <div class="profile">Logout</div>
+           <a href="{% url 'logout' %}" id="log-out-btn"> <div class="profile">Logout</div></a>
         </div>
     </nav> 
     {% endblock %}
@@ -54,7 +54,7 @@
 
         <div class="container">
             <div>Profile Updation</div>
-            <div><a href="">Edit</a></div>
+            <div><a href="{% url 'edit-profile' %}">Edit</a></div>
         </div>
         
 

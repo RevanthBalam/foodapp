@@ -6,13 +6,13 @@
 {% endblock %}
 
 {% block content %}
-<form action="{% url 'owner' %}">
+<form action="{% url 'new-item' %}" method="POST" enctype="multipart/form">
 <div class="form-details">
-
-    <input type="text" placeholder="Food Name" required minlength="10 ">
-    <input type="text" placeholder="Description" required>
-    <input type="number" placeholder="Price" min=1 required>
-    <input type="file" placeholder="Upload Image">
+{% csrf_token %}
+    <input type="text" placeholder="Food Name"  name="foodproductname" required minlength="10 ">
+    <input type="text" placeholder="Description" name="Description" required>
+    <input type="number" placeholder="Price" min=1 name="price" required>
+    <input type="file" placeholder="Upload Image" name="img">
     <button type="submit">Submit</button>
 
 </div>

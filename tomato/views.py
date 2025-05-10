@@ -1,101 +1,168 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
+from django.contrib.auth import authenticate,login,logout
+from .models import Restaurant
 
-from django.contrib.auth.hashers import make_password,check_password
+
 from .models import*
 
 # Create your views here.
 
 
-def restaurant(request):
-    return render(request,'restaurant.html')
+
+def restaurant(request,id):
+    
+    
+    res_details = Restaurant.objects.get(id=id)
+    
+    food_items = FoodItem.objects.filter(from_the_restaurant_id=id)
+    
+    return render(request,'restaurant.html',{'res_details':res_details,'food_items':food_items})
+
+
 def owner(request):
+    
+    user=request.user
+    
+    if request.method == "POST":
+        
+        this_res = Restaurant.objects.filter(points_to_the_user = request.user ).first()
+        
+        if this_res:
+            
+            if this_res:
+                this_res.restaurant_name = request.POST.get('res-name')
+                this_res.restaurant_short_description = request.POST.get('res-short-des')
+                this_res.restaurant_full_description = request.POST.get('res-long-des')
+                this_res.restaurant_image = request.FILES.get('res-img')
+                this_res.type_of_food = request.POST.get('type_of_providing_food')
+                this_res.save()
+                return redirect('owner')
+        
+        restaurantname = request.POST.get('res-name')
+        restaurant_short_des = request.POST.get('res-short-des')
+        restaurant_long_des = request.POST.get('res-long-des')
+        restaurant_img = request.FILES.get('res-img')
+        restaurant_type_of_food_providing = request.POST.get('type_of_providing_food')
+            
+        Restaurant.objects.create(restaurant_name=restaurantname,
+                                  restaurant_short_description=restaurant_short_des,
+                                  restaurant_full_description = restaurant_long_des,
+                                  restaurant_image = restaurant_img,
+                                  type_of_food = restaurant_type_of_food_providing,
+                                  points_to_the_user = user
+                                  )
+        
+        
+        return render(request, 'owner.html')
 
     return render(request,'owner.html')
+
+
+
 def new_item(request):
+    
+    if request.method == "POST":
+        restaurant = Restaurant.objects.get(points_to_the_user = request.user)
+        foodname = request.POST.get('foodproductname')
+        food_des = request.POST.get('Description')
+        food_price = request.POST.get('price')
+        food_image = request.FILES.get('img')
+        
+        
+        FoodItem.objects.create(food_item_image=food_image,
+                                food_item_name=foodname,
+                                food_item_price=food_price,
+                                food_item_des=food_des,
+                                from_the_restaurant=restaurant)
+        
+        return redirect('owner')
+        
     return render(request,'newitem.html')
+
+
+
 def edit_item(request):
     return render(request,'edititem.html')
+
+
+
 def view_orders(request):
     return render(request,'vieworders.html')
 
 def home(request):
-    restaurants = RestaurantOwner.objects.all()
-    return render(request,'index.html',{'res':restaurants})
+    
+    rests = Restaurant.objects.all()
+    return render(request,'index.html',{'rests':rests})
 
 
 def cart(request):
     return render(request,'cart.html')
 
-def login(request):
-    return render(request,'login.html')
-def register(request):
-    if request.method == "POST":
-        username = request.POST.get('user_name')
-        password_1 = request.POST.get('password_1')
-        password_2 = request.POST.get('password_2')
-        
-        if password_1 == password_2:
-            if NormalUsers.objects.filter(username = username).exists() or RestaurantOwner.objects.filter(username=username).exists():
-                return render(request,'register.html',{'error':"Username Taken"})
-            users = NormalUsers.objects.all()
-            for user in users:
-                isHave = check_password(password_1,user.password)
-                if isHave:
-                    return render(request,'register.html',{'error':"Password Taken"})
-                
-            users = RestaurantOwner.objects.all()
-            for user in users:
-                isHave = check_password(password_1,user.password)
-                if isHave:
-                    return render(request,'register.html',{'error':"Password Taken"})
-            
-            hashedpass=make_password(password_1)
-            NormalUsers.objects.create(username=username,password=hashedpass)
-                
-            return redirect('home')
-        return render(request,'register.html',{'error':"Password doesnt match"})
-    return render(request,'register.html')
 
-#displayregisterpage of owner
-def register_owner(request):  
-        if request.method == 'POST':
-            
-            username = request.POST.get('res-username')
-            restaurant_name = request.POST.get('name')
-            restaurant_img = request.FILES.get('res-image')
-            password1 = request.POST.get('password_1')
-            password2 = request.POST.get('password_2')
-            res_des = request.POST.get('res-des')
-            
-            if (password1 == password2):
-                if NormalUsers.objects.filter(username = username).exists() or RestaurantOwner.objects.filter(username=username).exists():
-                    return render(request,'regitser-owner.html',{'error':"Username Taken"})
-                
-                users = NormalUsers.objects.all()
-                for user in users:
-                    isHave = check_password(password1,user.password)
-                    if isHave:
-                        return render(request,'regitser-owner.html',{'error':"Password Taken"})
-                
-                users = RestaurantOwner.objects.all()
-                for user in users:
-                    isHave = check_password(password1,user.password)
-                    if isHave:
-                        return render(request,'regitser-owner.html',{'error':"Password Taken"})
-               
-                hashed_password = make_password(password1)
-                RestaurantOwner.objects.create(
-                        username=username,
-                        restaurant_name=restaurant_name,
-                        restaurant_image=restaurant_img,
-                        password=hashed_password,
-                        restaurant_description = res_des
-                        )
-                return redirect('owner')
-            return render(request,'regitser-owner.html',{'error':"Password not match"})
-                
-        print("outside")
-        return render(request,'regitser-owner.html')
+
+
+def edit_profile(request):
     
+    res = None
+    
+    
+    if Restaurant.objects.filter(points_to_the_user=request.user).exists():
+        res = Restaurant.objects.get(points_to_the_user=request.user)
+
+    return render(request,'res-profile.html',{'rest':res})
+
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username = username,password=password)
+        if user:
+            login(request,user)
+            
+            if user.is_owner:
+                return redirect('owner')
+            else:
+
+                return redirect('home')      
+        else:
+            return render(request,'login.html',{'error':'Invalid'})
+        
+    return render(request,'login.html')
+        
+
+
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+
+
+
+def register(request):
+    
+    if request.method == "POST":
+        
+        username = request.POST.get('user_name')
+        password1 = request.POST.get('password_1')
+        password2 = request.POST.get('password_2')
+        
+        if request.POST.get('is_owner'):
+            isowner = True
+        else:
+            isowner = False
+            
+            
+        if password1 == password2:
+            if CustomUser.objects.filter(username = username).exists():
+                return render(request,'register.html',{'error':'Username Taken'})
+            CustomUser.objects.create_user(username=username,password=password1,is_owner=isowner)
+            if CustomUser.is_owner:
+                return redirect('login')
+            return redirect('home')
+    
+    return render(request,'register.html')

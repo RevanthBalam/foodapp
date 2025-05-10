@@ -34,25 +34,41 @@
             </div>
         </div>
         <div class='right-nav'>
+            {% if user.is_authenticated %}
             <div class="order-btn">
                 <img src="{% static 'images/basket_icon.png' %}" alt="">
-                <p>Order Now</p>
+                <p>My orders</p>
             </div>
-            <a href="{% url 'login' %}"><button class="profile">Login</button></a>
+            
+                <button class="profile">{{user.username}}</button>
+                <a href="{% url 'logout' %}"><button class="logout">Logout</button></a>
+
+            {% else %}
+                <a href="{% url 'login' %}"><button class="profile">Login</button></a>
+            {% endif %}
         </div>
         <div class="hamburger">&#9776;</div>
     </nav>
     <div class="mobile-menu">
+        
         <a href="{% url 'home' %}">Home</a>
         <a href="#all-res">Restaurant Details</a>
         <a href="#">Cart</a>
-        <a href="#">Order Now</a>
-        <a href="#">Login</a>
+
+        {% if user.is_authenticated %}
+
+        <a href="#">MyOders</a>
+
+
+        <a href="{% url 'logout' %}">Logout</a>
+
+        {% else %}
+
+        <a href="{% url 'login' %}">Login</a>
+
+        {% endif %}
+        
       </div>
-
-
-
-   
     
 
     {% endblock %}
@@ -116,15 +132,16 @@
 
         <div class="restaurants-container">
 
+            
 
-            {% for re in res %}
+            {% for re in rests %}
 
             <div class="Restaurant">
                 <img src="{{re.restaurant_image.url}}" alt="">
                 <p class="res-name">Le bella veta</p>
                 <p>Italin cuisne</p>
                 <p>Rating:4.5</p>
-                <a href="{% url 'rest' %}">View Menu</a>
+                <a href="{% url 'rest' re.id %}">View Menu</a>
             </div>
 
             {% endfor %}

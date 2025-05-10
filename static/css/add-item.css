@@ -11,6 +11,11 @@
     height: 30px;
     padding-left: 10px;
 }
+.type{
+    
+    margin-left: 25px;
+    margin-bottom: 25px;
+}
 button{
     border-radius: 5px;
     border: none;

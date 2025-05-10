@@ -29,16 +29,14 @@
             <form  method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="text" placeholder="UserName" name="res-username" required>
-                <input type="text" placeholder="Restaurant Name"  name="name" required>
-                <label for="" id="res-name" >Restaurant Image</label>
-                <input id="res-label" type="file" name="res-image" id="">
                 
                 <input type="password" placeholder="Create PassWord" name="password_1" required>
                 
                 <input type="password" placeholder="confirm PassWord" name="password_2" required>
+                <label for="">Create As Restaurant Owner</label>
+                <input type="checkbox" name="" id="">
                
                
-                <textarea id="res-description" placeholder="Enter Description" name="res-des"></textarea>
 
                 {% if error %}
                 {{error}}

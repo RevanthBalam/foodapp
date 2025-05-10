@@ -35,6 +35,13 @@ body{
 #res-label{
     margin: 0;
 }
+#cb{
+    display:inline;
+    border: 1px solid black;
+    margin-right: 190px;
+}
+
+
 
 #res-name{
     font-size: 10px;

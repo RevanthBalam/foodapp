@@ -14,14 +14,18 @@
             <h1>Hello, Welcome</h1>
             <p>Don't Have An Account?</p>
             <a href="{% url 'register' %}">Register</a>
-            <a href="{% url 'register-owner' %}">Register as Owner</a>
         </div>
         <div class="login">
             <h2>Login</h2>
-            <form action="{% url 'home' %}">
+            <form method="POST" action="{% url 'login' %}">
                 {% csrf_token %}
-                <input type="text" placeholder="UserName" required>
-                <input type="password" placeholder="PassWord" required>
+                <input type="text" placeholder="UserName" name="username" required>
+                <input type="password" placeholder="PassWord" name="password" required>
+
+                {% if error %}
+
+                <p>{{error}}</p>
+                {% endif %}
             
             <p>Forgot Password</p>
             <button type="submit">Login</button>

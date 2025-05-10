@@ -67,6 +67,13 @@ nav{
     border-radius: 10px;
     border: none;
     color: white;
+     text-decoration: none;
+
+   
+}
+
+#log-out-btn{
+    text-decoration: none;
 }
 .header-logo{
     height: 50px;

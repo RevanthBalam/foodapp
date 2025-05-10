@@ -10,6 +10,8 @@ nav,.left-nav,.right-inner-div,.left-inner-div{
     /* justify-content: center; */
     align-items: center;
 }
+
+
 .left-inner-div p{
     font-size: 26px;
     font-weight: bold;
@@ -60,7 +62,7 @@ nav{
 .right-inner-div ul li a{
     text-decoration: none;
 }
-.profile{
+.profile,.logout{
     border: 1px solid black;
     padding: 10px;
     background-color: hsl(280, 88%, 74%);
@@ -68,6 +70,10 @@ nav{
     border: none;
     color: white;
     cursor: pointer;
+}
+
+.logout{
+background-color: red;
 }
 .header-logo{
     height: 50px;
