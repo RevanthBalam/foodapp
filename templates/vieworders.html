@@ -12,39 +12,66 @@
 
 <div class="orders-container">
 
-    <div class="order-item">
-        <p>Image</p>
-        <p>Item</p>
-        <p>Username</p>
-       <p>Status</p>
-    </div>
-    <div class="order-item">
-        <img src="{% static 'images/food_5.png' %}" alt="">
-        <p>Pasta</p>
-        <p>Revan</p>
-        <select name="Pending" id="">
-            <option value="">Delivered</option>
-            <option value="">out of delivery</option>
-        </select>
-    </div>
-    <div class="order-item">
-        <img src="{% static 'images/food_5.png' %}" alt="">
-        <p>Pasta</p>
-        <p>Revan</p>
-        <select name="Pending" id="">
-            <option value="">Delivered</option>
-            <option value="">out of delivery</option>
-        </select>
-    </div>
-    <div class="order-item">
-        <img src="{% static 'images/food_5.png' %}" alt="">
-        <p>Pasta</p>
-        <p>Revan</p>
-        <select name="Pending" id="">
-            <option value="">Delivered</option>
-            <option value="">out of delivery</option>
-        </select>
-    </div>
+<table>
+
+    <tr>
+    <th>Image</th>
+    <th>Item</th>
+    <th>Username</th>
+    <th>Status</th>
+    </tr>
+
+
+    <tr>
+
+        <td><img src="{% static 'images/food_5.png' %}" alt=""></td>
+
+        <td><p>Pasta</p></td>
+        <td><p>revanth</p></td>
+        
+        <td><select name="Pending" id="">
+                <option value="">Delivered</option>
+                <option value="">out of delivery</option>
+            </select>
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <td><img src="{% static 'images/food_6.png' %}" alt=""></td>
+
+        <td><p>pista pappu</p></td>
+        <td><p>sai sudharshan kumar</p></td>
+        
+        <td><select name="Pending" id="">
+                <option value="">Delivered</option>
+                <option value="">out of delivery</option>
+            </select>
+        </td>
+
+    </tr>
+
+    
+    <tr>
+
+        <td><img src="{% static 'images/food_7.png' %}" alt=""></td>
+
+        <td><p>Pasta</p></td>
+        <td><p>revanth</p></td>
+        
+        <td><select name="Pending" id="">
+                <option value="">Delivered</option>
+                <option value="">out of delivery</option>
+            </select>
+        </td>
+
+    </tr>
+
+
+</table>
+
 </div>
 <div class="back"><a href="{% url 'owner' %}">Back</a></div>
 

@@ -10,20 +10,67 @@
     {% csrf_token %}
 <div class="form-details">
 
-    <input type="text" placeholder="Restaurant Name"  name="res-name" required minlength="10 " 
-    value = "{{rest.restaurant_name}} ">
-    <input type="text" placeholder="short Description" name="res-short-des" required value = "{{rest.restaurant_short_description}} ">
-    <input type="text" placeholder="long Description"  name="res-long-des" required  value = "{{rest.restaurant_full_description}}" >
-     
 
-    <input type="file" placeholder="Upload Image" name="res-img" required>
+
+
+    {% if rest.restaurant_name %}
+
+        <input type="text"  name="res-name" required minlength="10" value = "{{rest.restaurant_name}} ">
+
+    {% else %}
+
+        <input type="text" placeholder = "Restaurant Name"  name="res-name" required minlength="10">
+
+    
+    {% endif %}
+
+    {% if rest.restaurant_short_description %}
+
+        <input type="text" id="short-d"  value = "{{rest.restaurant_short_description}}" placeholder= "short Description" name="res-short-des" required >
+
+
+    {% else %}
+
+        <input type="text" id="short-d" placeholder= "short Description" name="res-short-des" value = "{{rest.restaurant_short_description}}">
+    
+    {% endif %}
+
+    {% if rest.restaurant_full_description %}
+
+        <input type="text" value ="{{rest.restaurant_full_description}}" id="long-d" placeholder= "long Description"  name="res-long-des" required  >
+
+    {% else %}
+
+        <input type="text"  id="long-d" placeholder= "long Description"  name="res-long-des"  value = "{{rest.restaurant_full_description}}" >
+    
+    {% endif %}
+
+    {% if rest.restaurant_image %}
+      <p class="for-margin">Current Image:</p>
+    <img class="for-margin cur-image" src="{{ rest.restaurant_image.url }}" alt="Current image" height="100"><br>
+
+     <input type="file" placeholder= "Upload Image" name="res-img" >
+
+    {% else %}
+
+     <input type="file" placeholder= "Upload Image" name="res-img" required>
+
+     {% endif %}
+
+
+
+   
 
     <div class='type'>
         <label for="">Type of food : </label>
-    <select name="type_of_providing_food" id="">
-        <option value="veg">Veg</option>
-        <option value="Non-veg">Non-veg</option>
-        <option value="veg & Non-veg">veg & Non-veg</option>
+
+        
+    <select name="type_of_providing_food" id=""  >
+
+        <option value="veg"  {% if rest.type_of_food == "veg" %}selected{% endif %}  >Veg</option>
+        <option value="Non-veg" {% if rest.type_of_food == "Non-veg" %}selected{% endif %} >Non-veg</option>
+        <option value="veg & Non-veg" {% if rest.type_of_food == "veg & Non-veg" %}selected{% endif %} >veg & Non-veg</option>
+
     </select>
 
 

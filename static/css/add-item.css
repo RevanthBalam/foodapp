@@ -5,12 +5,20 @@
     margin: 0 auto;
     flex-direction: column;
 }
-
+.for-margin{
+    margin-left: 15px;
+}
+.cur-image{
+    height: 200px;
+    width: 250px;
+}
 .form-details input{
     margin: 15px;
     height: 30px;
     padding-left: 10px;
 }
+
+
 .type{
     
     margin-left: 25px;

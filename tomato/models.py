@@ -47,7 +47,7 @@ class FoodItem(models.Model):
     food_item_image = models.ImageField(upload_to='allimages')
     food_item_name = models.CharField(max_length=30)
     food_item_price = models.CharField(max_length=30)
-    food_item_des = models.CharField(max_length=30)
+    food_item_des = models.TextField()
     
     def __str__(self):
         return self.food_item_name

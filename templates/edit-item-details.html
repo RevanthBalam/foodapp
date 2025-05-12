@@ -1,0 +1,35 @@
+
+{% extends "newitem.html" %}
+ {% load static %}
+
+
+ {% block content %}
+
+ <form action="{% url 'update-details' fooddetails.id %}" method="POST" enctype="multipart/form-data">
+<div class="form-details">
+{% csrf_token %}
+    <input type="text" placeholder="Food Name" value="{{ fooddetails.food_item_name }}" name="foodproductname" required minlength="10">
+    <input type="text" placeholder="Description" value="{{ fooddetails.food_item_des }}" name="Description" required>
+    <input type="number" placeholder="Price" min=1 value="{{ fooddetails.food_item_price }}" name="price" required>
+    <p class="for-margin">Current Image:</p>
+    <img class="for-margin cur-image" src="{{ fooddetails.food_item_image.url }}" alt="Current image" height="100"><br>
+    <input type="file" placeholder="Upload Image" name="img">
+    <button type="submit">Submit</button>
+
+</div>
+
+
+</form>
+<div class="back"><a href="{% url 'owner' %}">Back</a></div>
+
+{% endblock %}
+
+from_the_restaurant = models.ForeignKey(Restaurant,on_delete=models.CASCADE,related_name='food_items',null=True,blank=True)
+    food_item_image = models.ImageField(upload_to='allimages')
+    food_item_name = models.CharField(max_length=30)
+    food_item_price = models.CharField(max_length=30)
+    food_item_des =
+
+
+
+

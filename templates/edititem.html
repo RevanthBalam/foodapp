@@ -8,34 +8,25 @@
 
 {% block content %}
 
-<h3 class="heading">Items</h3>
+<h3 class="heading">Your Food Items</h3>
+
+{% for item in fooditems %}
 <div class="container-items">
     <div class="each-item">
         <div class="item-details">
-            <img src="{% static 'images/food_4.png' %}" alt="">
-            <p>Pasta</p>
+            <img src="{{item.food_item_image.url}}" alt="">
+            <p>Name : {{item.food_item_name}}</p>
+            <p>Price : {{item.food_item_price}} Rupees </p>
         </div>
-        <button class="edit-btn">Edit</button>
+        <a id="delete-btn" href="{% url 'delete-item' item.id %}"><button class="del-btn"> X </button></a>
+        <a href="{% url 'edit-item-details' item.id %}"><button class="edit-btn">Edit</button></a>
     </div>
 </div>
-<div class="container-items">
-    <div class="each-item">
-        <div class="item-details">
-            <img src="{% static 'images/food_5.png' %}" alt="">
-            <p>Pasta</p>
-        </div>
-        <button class="edit-btn">Edit</button>
-    </div>
-</div>
-<div class="container-items">
-    <div class="each-item">
-        <div class="item-details">
-            <img src="{% static 'images/food_2.png' %}" alt="">
-            <p>Pasta</p>
-        </div>
-        <button class="edit-btn">Edit</button>
-    </div>
-</div>
+
+{% endfor %}
+
+
+
 <div class="back"><a href="{% url 'owner' %}">Back</a></div>
 
 {% endblock %}

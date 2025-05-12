@@ -13,11 +13,13 @@
     <div class="wrapper">
 
     <div class="heading">
-        <p>Savory Garden Bistro</p>
+
+        <p>{{res_details.restaurant_name}}</p>
+
     </div>
     <div class="des">
-        <p>Nestled in the heart of the city, Savory Garden Bistro offers a delightful escape with its charming interior and exquisite menu.</p>
-        <p>The restaurant boasts a warm and inviting ambiance, perfect for both intimate dinners and lively gatherings. Our carefully curated menu features seasonal produce and organic ingredients, catering to both vegetarian and vegan preferences. Experience culinary bliss at Savory Garden Bistro!</p>
+       <p>{{res_details.restaurant_short_description}}</p>
+       <p>{{res_details.restaurant_full_description}}</p>
     </div>
     <div class="res-image">
 
@@ -35,83 +37,28 @@
 <div class="menu-container">
     <h3 class='main-header'>Our Menu</h3>
     <div class="fooditems-container">
+
+
+        {% for item in food_items %}
         <div class="food-item">
             <div class="food-item-head">
-                <img src="{% static 'images/food_6.png' %}" alt="">
+                <img src="{{item.food_item_image.url}}" alt="">
             </div>
             <div class="food-item-body">
-                <p>Pasta</p>
-                <p>Rich creamy</p>
-                <p>Price:$ 12</p>
-                <a href="">Add to Cart</a>
+                <h4>{{item.food_item_name}}</h4>
+                <p>{{item.food_item_des}}</p>
+                <p>Price:{{item.food_item_price}}</p>
+                <a href="{% url 'add_to_cart' item.id %}">Add to Cart</a>
             </div>
         </div>
-        <div class="food-item">
-            <div class="food-item-head">
-                <img src="{% static 'images/food_7.png' %}" alt="">
-            </div>
-            <div class="food-item-body">
-                <p>Pasta</p>
-                <p>Rich creamy</p>
-                <p>Price:$ 12</p>
-                <a href="">Add to Cart</a>
-            </div>
-        </div>
-        <div class="food-item">
-            <div class="food-item-head">
-                <img src="{% static 'images/food_8.png' %}" alt="">
-            </div>
-            <div class="food-item-body">
-                <p>Pasta</p>
-                <p>Rich creamy</p>
-                <p>Price:$ 12</p>
-                <a href="">Add to Cart</a>
-            </div>
-        </div>
-        <div class="food-item">
-            <div class="food-item-head">
-                <img src="{% static 'images/food_9.png' %}" alt="">
-            </div>
-            <div class="food-item-body">
-                <p>Pasta</p>
-                <p>Rich creamy</p>
-                <p>Price:$ 12</p>
-                <a href="">Add to Cart</a>
-            </div>
-        </div>
-        <div class="food-item">
-            <div class="food-item-head">
-                <img src="{% static 'images/food_10.png' %}" alt="">
-            </div>
-            <div class="food-item-body">
-                <p>Pasta</p>
-                <p>Rich creamy</p>
-                <p>Price:$ 12</p>
-                <a href="">Add to Cart</a>
-            </div>
-        </div>
-        <div class="food-item">
-            <div class="food-item-head">
-                <img src="{% static 'images/food_11.png' %}" alt="">
-            </div>
-            <div class="food-item-body">
-                <p>Pasta</p>
-                <p>Rich creamy</p>
-                <p>Price:$ 12</p>
-                <a href="">Add to Cart</a>
-            </div>
-        </div>
-        <div class="food-item">
-            <div class="food-item-head">
-                <img src="{% static 'images/food_12.png' %}" alt="">
-            </div>
-            <div class="food-item-body">
-                <p>Pasta</p>
-                <p>Rich creamy</p>
-                <p>Price:$ 12</p>
-                <a href="">Add to Cart</a>
-            </div>
-        </div>
+
+        {% endfor %}
+       
+        
+       
+        
+       
+        
     </div>
 </div>
 

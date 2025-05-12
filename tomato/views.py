@@ -15,10 +15,27 @@ def restaurant(request,id):
     
     
     res_details = Restaurant.objects.get(id=id)
+    print(res_details,"restas details 18")
     
     food_items = FoodItem.objects.filter(from_the_restaurant_id=id)
     
+    print("food items 22")
+    
     return render(request,'restaurant.html',{'res_details':res_details,'food_items':food_items})
+
+
+def delete_item(request,id):
+    
+    FoodItem.objects.get(id=id).delete()
+    
+    return redirect('edit-item')
+    
+    
+def add_to_cart(request,id):
+    
+    
+    
+    
 
 
 def owner(request):
@@ -30,13 +47,17 @@ def owner(request):
         this_res = Restaurant.objects.filter(points_to_the_user = request.user ).first()
         
         if this_res:
-            
-            if this_res:
                 this_res.restaurant_name = request.POST.get('res-name')
                 this_res.restaurant_short_description = request.POST.get('res-short-des')
                 this_res.restaurant_full_description = request.POST.get('res-long-des')
-                this_res.restaurant_image = request.FILES.get('res-img')
                 this_res.type_of_food = request.POST.get('type_of_providing_food')
+                
+                
+                if request.FILES.get('res-img'):
+                    this_res.restaurant_image = request.FILES.get('res-img')
+                    
+                
+                
                 this_res.save()
                 return redirect('owner')
         
@@ -83,8 +104,59 @@ def new_item(request):
 
 
 
+
+def update_item_details(request,id):
+    if request.method == "POST":
+        name = request.POST.get('foodproductname')
+        des = request.POST.get('Description')
+        price = request.POST.get('price')
+        img = request.FILES.get('img')
+        
+        
+        
+    if img:
+        FoodItem.objects.filter(id=id).update(
+            food_item_name=name,
+            food_item_price = price,
+            food_item_des = des,
+            food_item_image=img   
+        )
+        
+        return redirect('owner')
+    
+    else:
+        FoodItem.objects.filter(id=id).update(
+            food_item_name=name,
+            food_item_price = price,
+            food_item_des = des,  
+        )
+        
+        return redirect('owner')
+    
+    
+        
+
+
+def edit_item_details(request,id):
+    
+    fooddetails = FoodItem.objects.get(id=id)
+    
+    return render(request,'edit-item-details.html',{'fooddetails':fooddetails})
+
+
 def edit_item(request):
-    return render(request,'edititem.html')
+    
+    res = Restaurant.objects.get(points_to_the_user = request.user)
+    
+    print(res,"93 line")
+    
+    fooditemsofres = FoodItem.objects.filter(from_the_restaurant = res)
+    
+    print(fooditemsofres,"97")
+     
+    
+    
+    return render(request,'edititem.html',{'fooditems':fooditemsofres})
 
 
 
@@ -110,6 +182,7 @@ def edit_profile(request):
     
     if Restaurant.objects.filter(points_to_the_user=request.user).exists():
         res = Restaurant.objects.get(points_to_the_user=request.user)
+        print(res.restaurant_image,"167")
 
     return render(request,'res-profile.html',{'rest':res})
 

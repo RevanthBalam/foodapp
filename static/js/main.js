@@ -6,3 +6,11 @@
     mobileMenu.classList.toggle('active');
   });
 
+
+  let addToCartButton = document.getElementById('toCart-btn')
+
+  function addToCart(){
+    console.log("Hello")
+  }
+
+
