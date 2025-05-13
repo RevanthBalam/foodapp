@@ -10,31 +10,41 @@
 
 {% block content %}
 <div class="all-items">
-    <h3 class='main-header'>Our Menu</h3>
+
+
+
+{% if cartitems %}
+ <h3 class='main-header'>Your Cart</h3>
+
+
+{% for cart_item in cartitems %}
 <div class="cart-item">
-    <img src="{% static 'images/food_6.png' %}" class="item-image">
+    <img src="{{cart_item.to_food.food_item_image.url}}" class="item-image">
     <div class="item-details">
-        <div class="item-name">Pasta</div>
-        <div class="item-price">$59.99</div>
-        Quantity: <input type="number" class="quantity" value="1" min="1">
-        <button class="remove-btn">Remove</button>
+        <div class="item-name">{{cart_item.to_food.food_item_name}}</div>
+        <div class="item-price">Price : ₹{{cart_item.price}}</div>
+        Quantity: x {{cart_item.quantity}}
+        <a href="{% url 'delete' cart_item.id %}"><button class="remove-btn">Remove</button></a>
     </div>
 </div>
 
-<div class="cart-item">
-    <img src="{% static 'images/food_9.png' %}" class="item-image">
-    <div class="item-details">
-        <div class="item-name">Pani Puri</div>
-        <div class="item-price">$129.99</div>
-        Quantity: <input type="number" class="quantity" value="1" min="1">
-        <button class="remove-btn">Remove</button>
-    </div>
-</div>
+{% endfor %}
+
+
 
 <div class="cart-total">
-    <strong>Total: $189.98</strong>
+    <strong>Total Price : ₹{{tp}}</strong>
 </div>
 
-<button class="checkout-btn">Proceed to Checkout</button>
+
+<a href="{% url 'my_orders' %}"><button class="checkout-btn">Place Order</button></a>
+
+{% else %}
+
+    <h3 class='main-header'>No Items in Your Cart</h3>
+
+
+
+{% endif %}
 </div>
 {% endblock %}

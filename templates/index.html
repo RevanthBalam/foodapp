@@ -5,6 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quick Byte</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{% static "css/base.css" %}">
     <link rel="icon" href="{% static 'images/quickbyte_logo.png' %}" type="image/png">
 
@@ -35,10 +42,13 @@
         </div>
         <div class='right-nav'>
             {% if user.is_authenticated %}
-            <div class="order-btn">
-                <img src="{% static 'images/basket_icon.png' %}" alt="">
-                <p>My orders</p>
-            </div>
+
+            <a href="{% url 'place-orders' %}">
+                 <div class="order-btn">
+                    <img src="{% static 'images/basket_icon.png' %}" alt="">
+                    <p>My orders</p>
+                </div>
+            </a>
             
                 <button class="profile">{{user.username}}</button>
                 <a href="{% url 'logout' %}"><button class="logout">Logout</button></a>
@@ -53,7 +63,7 @@
         
         <a href="{% url 'home' %}">Home</a>
         <a href="#all-res">Restaurant Details</a>
-        <a href="#">Cart</a>
+        <a href="{% url 'cart' %}">Cart</a>
 
         {% if user.is_authenticated %}
 

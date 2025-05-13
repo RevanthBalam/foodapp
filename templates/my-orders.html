@@ -1,0 +1,71 @@
+    {% extends 'index.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/myorders.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="all-items">
+
+
+{% if orderslist %}
+
+    <h3 class='main-header'>Previous Orders</h3>
+
+
+    {% for order in orderslist %}
+
+
+    <div class="cart-item">
+        <img src="{{order.order_image.url}}" class="item-image">
+        <div class="item-details">
+            <div class="item-name">Items Name</div>
+            <div class="item-price">{{order.order_details}} (₹{{order.total_price}}/-)</div>
+            
+            
+        </div>
+        <div class="item-details">
+            <div class="item-name">Order Status</div>
+            <div class="item-price">{{order.status}}</div>
+        
+            
+            
+        </div>
+
+        <button class="review-btn">Add Review</button>
+    </div>
+
+
+
+    {% endfor %}
+
+
+
+{% else %}
+
+
+ <h3 class='main-header'>No Orders Placed</h3>
+
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+{% endblock %}

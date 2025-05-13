@@ -47,8 +47,24 @@ select{
     max-width: 500px;
     position: relative;
     margin: 0 auto;
-
     height: 30px;
+}
+
+.update{
+    max-width: 500px;
+    position: relative;
+    margin: 0 auto;
+    height: 30px;
+}
+
+.update button{
+    position: absolute;
+    padding: 5px;
+    right: 0;
+    border: none;
+    background-color: goldenrod;
+    color: white;
+    border-radius: 2px;
 }
 .back a{
     position: absolute;
@@ -60,4 +76,11 @@ select{
     background-color: black;
     color: white;
     border-radius: 3px;
+}
+
+
+@media (max-width:350px){
+    *{
+        font-size: 12px;
+    }
 }

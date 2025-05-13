@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
@@ -15,11 +15,10 @@ def restaurant(request,id):
     
     
     res_details = Restaurant.objects.get(id=id)
-    print(res_details,"restas details 18")
+   
     
     food_items = FoodItem.objects.filter(from_the_restaurant_id=id)
     
-    print("food items 22")
     
     return render(request,'restaurant.html',{'res_details':res_details,'food_items':food_items})
 
@@ -30,8 +29,116 @@ def delete_item(request,id):
     
     return redirect('edit-item')
     
+def update_order_status(request):
     
-def add_to_cart(request,id):
+    if request.method == "POST":
+        current_res_obj = Restaurant.objects.get(points_to_the_user=request.user)
+        orders_of_current_res = Order.objects.filter(from_restaurant=current_res_obj)
+        print(current_res_obj,orders_of_current_res,37)
+        
+        for order in orders_of_current_res:
+            order.status = request.POST.get(f"status_{order.id}")
+            order.save()
+            print(order.status,41)
+            
+        print(current_res_obj,orders_of_current_res,42)
+        
+    return redirect('view-orders')
+    
+    
+    
+def add_to_cart(request,rest_id,food_id):
+    
+  
+        
+    
+    foodobject = FoodItem.objects.get(id=food_id)
+    restaurantobject = Restaurant.objects.get(id=rest_id)
+    
+    cart_row = Cart.objects.filter(
+        to_user = request.user,
+        to_food = foodobject,
+        to_restaurant = restaurantobject,
+        is_ordered = False
+    ).first()
+    
+    
+  
+    
+    
+    if cart_row:
+        cart_row.price += foodobject.food_item_price
+        cart_row.quantity += 1
+        cart_row.save()
+        
+    else:
+        Cart.objects.create(
+            to_user = request.user,
+            to_restaurant= restaurantobject,
+            to_food = foodobject,
+            is_ordered = False,
+            quantity = 1,
+            price = foodobject.food_item_price
+        )
+        
+        print("Added new Item to the cart")
+        
+   
+    return redirect('cart')
+    
+    
+    
+
+    
+    
+def my_orders(request):
+    
+    cartitems_of_current_user = Cart.objects.filter(to_user=request.user,is_ordered = False)
+    
+    restaurants= {}
+    
+    for row in cartitems_of_current_user:
+        if row.to_restaurant.restaurant_name not in restaurants:
+            restaurants[row.to_restaurant.restaurant_name] = []
+            
+        restaurants[row.to_restaurant.restaurant_name].append(row)
+        
+    print(restaurants,"91 Line")
+    
+    for row in cartitems_of_current_user:
+        row.is_ordered = True
+        row.save()
+        
+        
+    for key,value in restaurants.items():
+        string=""
+        t_quantity = 0
+        t_price = 0 
+        for v in value:
+            string += f",{v.to_food.food_item_name} x {v.quantity}"
+            t_quantity += v.quantity
+            t_price += v.price
+        formated_str = string[1:len(string)]
+        
+        Order.objects.create(order_details = formated_str,
+                             from_restaurant = v.to_restaurant,
+                             total_quantity = t_quantity,
+                             total_price = t_price,
+                             from_user = v.to_user)
+        
+        
+        
+   
+                             
+        
+    return redirect('place-orders')
+
+
+def place_orders(request):
+    
+    orderslist = Order.objects.filter(from_user = request.user).order_by('-ordered_at')
+    
+    return render(request,'my-orders.html',{'orderslist':orderslist})
     
     
     
@@ -148,11 +255,9 @@ def edit_item(request):
     
     res = Restaurant.objects.get(points_to_the_user = request.user)
     
-    print(res,"93 line")
     
     fooditemsofres = FoodItem.objects.filter(from_the_restaurant = res)
     
-    print(fooditemsofres,"97")
      
     
     
@@ -161,7 +266,30 @@ def edit_item(request):
 
 
 def view_orders(request):
-    return render(request,'vieworders.html')
+    
+    res_obj = Restaurant.objects.get(points_to_the_user=request.user)
+    
+    resorders = Order.objects.filter(from_restaurant = res_obj).order_by('-ordered_at')
+    
+    return render(request,'vieworders.html',{'resorders':resorders})
+
+
+
+def update_status(request,id):
+    
+    return redirect('owner')
+        
+
+
+def delete_cart_item(request,id):
+    
+    cart_item = get_object_or_404(Cart, id=id, to_user=request.user, is_ordered=False)
+    cart_item.delete()
+    
+    return redirect('cart')
+
+
+
 
 def home(request):
     
@@ -170,7 +298,14 @@ def home(request):
 
 
 def cart(request):
-    return render(request,'cart.html')
+    cartallitems = Cart.objects.filter(to_user = request.user,is_ordered=False)
+    total_price = 0
+    
+    for item in cartallitems:
+        total_price+=item.price
+        
+    
+    return render(request,'cart.html',{'cartitems':cartallitems,'tp':total_price})
 
 
 

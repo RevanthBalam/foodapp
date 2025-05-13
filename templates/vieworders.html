@@ -10,9 +10,16 @@
 
 {% block content %}
 
+{% if resorders %}
+
+<form action="{% url 'update-order-status' %}" method="POST">
+
+    {% csrf_token %}
+
+
 <div class="orders-container">
 
-<table>
+    <table>
 
     <tr>
     <th>Image</th>
@@ -21,58 +28,53 @@
     <th>Status</th>
     </tr>
 
+    
+    {% for resorder in  resorders %}
 
     <tr>
 
-        <td><img src="{% static 'images/food_5.png' %}" alt=""></td>
+        <td><img src="{{resorder.order_image.url}}" alt=""></td>
 
-        <td><p>Pasta</p></td>
-        <td><p>revanth</p></td>
+        <td><p>{{resorder.order_details}}</p></td>
+        <td><p>{{resorder.from_user.username}}</p></td>
         
-        <td><select name="Pending" id="">
-                <option value="">Delivered</option>
-                <option value="">out of delivery</option>
-            </select>
+        <td>
+                
+                    <select name="status_{{resorder.id}}">
+                        <option value="Pending" {% if resorder.status == "Pending" %}selected{% endif %}>Pending</option>
+                        <option value="on-delivery" {% if resorder.status == "on-delivery" %}selected{% endif %}>Out for delivery</option>
+                        <option value="Success" {% if resorder.status == "Success" %}selected{% endif %}>Delivered</option>
+                    </select>
+                    
+              
         </td>
 
     </tr>
 
+    {% endfor %}
+    
 
-    <tr>
+    </table>
 
-        <td><img src="{% static 'images/food_6.png' %}" alt=""></td>
 
-        <td><p>pista pappu</p></td>
-        <td><p>sai sudharshan kumar</p></td>
-        
-        <td><select name="Pending" id="">
-                <option value="">Delivered</option>
-                <option value="">out of delivery</option>
-            </select>
-        </td>
+    </div>
+    <div class="update"><button type="submit">Update</button></div>
 
-    </tr>
 
     
-    <tr>
+    {% else %}
 
-        <td><img src="{% static 'images/food_7.png' %}" alt=""></td>
+    <p class="orders-container">NO orders yet</p>
+    
+    
 
-        <td><p>Pasta</p></td>
-        <td><p>revanth</p></td>
-        
-        <td><select name="Pending" id="">
-                <option value="">Delivered</option>
-                <option value="">out of delivery</option>
-            </select>
-        </td>
-
-    </tr>
+    
+    {% endif %}
+    
+</form>
 
 
-</table>
+    <div class="back"><a href="{% url 'owner' %}">Back</a></div>
 
-</div>
-<div class="back"><a href="{% url 'owner' %}">Back</a></div>
 
 {% endblock %}

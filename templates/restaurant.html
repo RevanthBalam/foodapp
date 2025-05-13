@@ -47,8 +47,18 @@
             <div class="food-item-body">
                 <h4>{{item.food_item_name}}</h4>
                 <p>{{item.food_item_des}}</p>
-                <p>Price:{{item.food_item_price}}</p>
-                <a href="{% url 'add_to_cart' item.id %}">Add to Cart</a>
+                <p>Price : ₹{{item.food_item_price}}</p>
+
+
+                {% if user.is_authenticated %}  
+                <a href="{% url 'add-to-cart' rest_id=res_details.id food_id=item.id %}">Add to Cart</a>
+
+                {% else %}
+                <a href="{% url 'login' %}">Add to Cart</a>
+
+                {% endif %}
+
+
             </div>
         </div>
 
