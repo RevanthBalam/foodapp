@@ -126,7 +126,7 @@
     }
 }
 
-@media (max-width:350px) {
+@media (max-width:400px) {
 
     .food-item{
         padding: 35px;
@@ -134,8 +134,11 @@
     }
 
     .review{
-        padding: 8px;
+        padding: 14px;
         margin-left:9px ;
+    }
+    .review-boxes{
+        padding: 10px;
     }
 
     .review-boxes > .review {
