@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -82,14 +83,14 @@ WSGI_APPLICATION = 'foodapplication.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',  # The actual database name from Railway
-        'USER': 'root',
-        'PASSWORD': 'varsha1437',  # Your Railway MySQL password
-        'HOST': 'mysql.railway.internal',  # The host provided by Railway
-        'PORT': '3306',  # Default MySQL port
+        'NAME': 'foodwebapplication',  # Your local database name
+        'USER': 'root',                # Your local MySQL user (commonly 'root')
+        'PASSWORD': 'varsha1437',  # Replace with your local MySQL password
+        'HOST': '127.0.0.1',           # Use 'localhost' or '127.0.0.1' for local DB
+        'PORT': '3306',                # Default MySQL port
     }
 }
-print("MYSQLHOST:", os.environ.get("MYSQLHOST"))
+# print("MYSQLHOST:", os.environ.get("MYSQLHOST"))
 
 
 # Password validation
@@ -134,6 +135,8 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR,'assets')
+
+STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

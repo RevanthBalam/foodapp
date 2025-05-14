@@ -1,8 +1,4 @@
-asgiref==3.7.2
-Django==3.2.25
-Pillow==9.5.0
-PyMySQL==1.1.1
-pytz==2025.2
-sqlparse==0.4.4
-typing_extensions==4.7.1
-waitress==2.1.2
+django
+pillow
+Whitenoise
+gunicorn

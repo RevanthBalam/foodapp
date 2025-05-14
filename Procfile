@@ -1,1 +1,3 @@
-web: waitress-serve --listen=0.0.0.0:$PORT foodapplication.wsgi:application
+web: gunicorn foodapplication.wsgi --log-file - 
+#or works good with external database
+web: python manage.py migrate && gunicorn foodapplication.wsgi
