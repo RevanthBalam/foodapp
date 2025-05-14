@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User,AbstractUser
 from foodapplication import settings
+from cloudinary.models import CloudinaryField
 
 
 
@@ -27,7 +28,9 @@ class Restaurant(models.Model):
         null=True
     )
     restaurant_name = models.CharField(max_length=100)
-    restaurant_image = models.ImageField(upload_to="allimages")
+    restaurant_image = CloudinaryField('image')
+    
+    # restaurant_image = models.ImageField(upload_to="allimages")
     restaurant_short_description = models.TextField()
     restaurant_full_description = models.TextField()
     Type_choices = [
