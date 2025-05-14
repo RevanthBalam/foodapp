@@ -71,7 +71,7 @@ class Cart(models.Model):
     
     
 class Order(models.Model):
-    order_image = models.ImageField(default='allimages/parcel_icon.png',upload_to='allimages')
+    order_image = models.ImageField(default='https://res.cloudinary.com/dtzrlblna/image/upload/v1747247647/parcel_icon_hmc6ed.png',upload_to='allimages')
     order_details = models.TextField()
     STATUS_CHOICES = [
         ("Pending","Pending"),
