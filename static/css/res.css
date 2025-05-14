@@ -118,14 +118,6 @@
     font-weight: 600
 }
 
-
-@media (max-width:468px){
-    .res-image img{
-        width: 250px;
-        height: 160px;
-    }
-}
-
 @media (max-width:400px) {
 
     .food-item{
@@ -146,3 +138,11 @@
 }
     
 }
+
+@media (max-width:468px){
+    .res-image img{
+        width: 250px;
+        height: 160px;
+    }
+}
+
