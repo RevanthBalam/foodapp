@@ -88,6 +88,8 @@ DATABASES = {
     }
 }
 
+print("MYSQLHOST:", os.environ.get("MYSQLHOST"))
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
