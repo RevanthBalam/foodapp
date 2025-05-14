@@ -80,14 +80,13 @@ WSGI_APPLICATION = 'foodapplication.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQLDATABASE'),
-        'USER': os.environ.get('MYSQLUSER'),
-        'PASSWORD': os.environ.get('MYSQLPASSWORD'),
-        'HOST': os.environ.get('MYSQLHOST'),  # Do NOT use 'localhost'
-        'PORT': os.environ.get('MYSQLPORT', '3306'),
+        'NAME': 'railway',  # The actual database name from Railway
+        'USER': 'root',
+        'PASSWORD': 'varsha1437',  # Your Railway MySQL password
+        'HOST': 'mysql.railway.internal',  # The host provided by Railway
+        'PORT': '3306',  # Default MySQL port
     }
 }
-
 print("MYSQLHOST:", os.environ.get("MYSQLHOST"))
 
 
