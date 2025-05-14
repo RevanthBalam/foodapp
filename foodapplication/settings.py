@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'foodapplication.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'foodwebapplication',
-        'PASSWORD' : 'varsha1437',
-        'USER' : 'root',
-        'HOST':'localhost',
-        'PORT':3306,
+        'NAME': os.environ.get('MYSQLDATABASE'),
+        'USER': os.environ.get('MYSQLUSER'),
+        'PASSWORD': os.environ.get('MYSQLPASSWORD'),
+        'HOST': os.environ.get('MYSQLHOST'),  # Do NOT use 'localhost'
+        'PORT': os.environ.get('MYSQLPORT', '3306'),
     }
 }
 
