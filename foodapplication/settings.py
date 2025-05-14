@@ -19,7 +19,7 @@ AUTH_USER_MODEL = 'tomato.CustomUser'
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-CSRF_TRUSTED_ORIGINS= ["https://web-production-2aaf.up.railway.app "]
+CSRF_TRUSTED_ORIGINS= ["https://web-production-2aaf.up.railway.app"]
 
 
 # Quick-start development settings - unsuitable for production
