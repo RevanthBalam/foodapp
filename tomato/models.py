@@ -48,7 +48,7 @@ class Restaurant(models.Model):
    
 class FoodItem(models.Model):
     from_the_restaurant = models.ForeignKey(Restaurant,on_delete=models.CASCADE,related_name='food_items',null=True,blank=True)
-    food_item_image = models.ImageField(upload_to='allimages')
+    food_item_image = CloudinaryField('image')
     food_item_name = models.CharField(max_length=30)
     food_item_price = models.IntegerField()
     food_item_des = models.TextField()

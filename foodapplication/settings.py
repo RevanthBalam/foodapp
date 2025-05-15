@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 import pymysql
-import cloudinary_storage
+import cloudinary
+import cloudinary.api
+import cloudinary.uploader
+
 pymysql.install_as_MySQLdb()
 from pathlib import Path
 AUTH_USER_MODEL = 'tomato.CustomUser'
@@ -161,13 +164,20 @@ STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dtzrlblna',
-    'API_KEY' : '445614692876567',
-    'API_SECRET' : '5OhkuZhpJj9bcyM4kvMoRhwCwJg'
-}
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+cloudinary.config(
+    cloud_name = "dtzrlblna",
+    api_key = "445614692876567",
+    api_secret = "5OhkuZhpJj9bcyM4kvMoRhwCwJg",
+)
+
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'dtzrlblna',
+#     'API_KEY' : '445614692876567',
+#     'API_SECRET' : '5OhkuZhpJj9bcyM4kvMoRhwCwJg'
+# }
+
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 MEDIA_URL = '/media/'

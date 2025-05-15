@@ -15,6 +15,8 @@ def restaurant(request,id):
     
     
     res_details = Restaurant.objects.get(id=id)
+    
+    print(res_details.restaurant_image)
    
     
     food_items = FoodItem.objects.filter(from_the_restaurant_id=id)
