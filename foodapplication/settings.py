@@ -23,7 +23,7 @@ AUTH_USER_MODEL = 'tomato.CustomUser'
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-CSRF_TRUSTED_ORIGINS= ["https://web-production-2aaf.up.railway.app"]
+CSRF_TRUSTED_ORIGINS= ["https://quickbyte.up.railway.app"]
 
 
 # Quick-start development settings - unsuitable for production
@@ -35,7 +35,7 @@ SECRET_KEY = 'django-insecure-qvd@ywhrk-$^v0k4a$$l^-k6n5c9&(bb6v#ab&(lj9m4k5d4q8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['quickbyte.up.railway.app']
 
 
 # Application definition
@@ -90,12 +90,14 @@ WSGI_APPLICATION = 'foodapplication.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'railway',
         'USER': 'root',
-        'PASSWORD': 'SfgJpWBGbZnrpfFCakPeSPnEaZjDauzt',  # Paste your real Railway password
+        'PASSWORD': os.getenv('DB_PASSWORD'),  # Paste your real Railway password
         'HOST': 'shuttle.proxy.rlwy.net',
         'PORT': '18190',
     }
